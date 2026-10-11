@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.IsFinished) return;
+        if (!gameManager.CanPlay) return;
 
         Move();
         AimAtMouse();

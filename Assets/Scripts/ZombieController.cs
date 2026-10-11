@@ -18,7 +18,7 @@ public class ZombieController : MonoBehaviour
 
     private void Update()
     {
-        if (player == null || gameManager.IsFinished) return;
+        if (player == null || !gameManager.CanPlay) return;
 
         Vector3 direction = player.position - transform.position;
         direction.y = 0f;
