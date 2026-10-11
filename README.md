@@ -1,6 +1,6 @@
-# Orb Collector
+# Orb Collector 3D
 
-Bài tập Lập trình Game Cơ Bản bằng Unity 6.2 (6000.2.0f1).
+Bài tập game 3D môn Lập trình Game Cơ Bản bằng Unity 6.2 (6000.2.0f1). Sân chơi dùng camera phối cảnh, tường và trụ 3D; quả bóng lăn để nhặt các vật phẩm trên bệ.
 
 ## Cách chơi
 

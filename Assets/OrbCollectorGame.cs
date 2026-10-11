@@ -62,7 +62,9 @@ public class OrbCollectorGame : MonoBehaviour
         if (finished || playerBody == null) return;
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
         input = Vector3.ClampMagnitude(input, 1f);
-        playerBody.linearVelocity = new Vector3(input.x * 8f, 0f, input.z * 8f);
+        Vector3 movement = input * 8f;
+        playerBody.linearVelocity = movement;
+        playerBody.angularVelocity = Vector3.Cross(Vector3.up, movement) / 0.65f;
     }
 
     public void Collect(PickupItem item)
@@ -77,7 +79,11 @@ public class OrbCollectorGame : MonoBehaviour
     {
         finished = true;
         won = victory;
-        if (playerBody != null) playerBody.linearVelocity = Vector3.zero;
+        if (playerBody != null)
+        {
+            playerBody.linearVelocity = Vector3.zero;
+            playerBody.angularVelocity = Vector3.zero;
+        }
     }
 
     private void Restart()
@@ -90,15 +96,16 @@ public class OrbCollectorGame : MonoBehaviour
         Camera camera = new GameObject("Main Camera").AddComponent<Camera>();
         camera.gameObject.AddComponent<AudioListener>();
         camera.tag = "MainCamera";
-        camera.orthographic = true;
-        camera.orthographicSize = 10.5f;
-        camera.transform.position = new Vector3(0f, 16f, -12f);
+        camera.orthographic = false;
+        camera.fieldOfView = 52f;
+        camera.transform.position = new Vector3(7f, 16f, -20f);
         camera.transform.LookAt(Vector3.zero);
         camera.backgroundColor = new Color(0.08f, 0.11f, 0.18f);
 
         Light sunlight = new GameObject("Directional Light").AddComponent<Light>();
         sunlight.type = LightType.Directional;
         sunlight.intensity = 1.3f;
+        sunlight.shadows = LightShadows.Soft;
         sunlight.transform.rotation = Quaternion.Euler(45f, -25f, 0f);
         RenderSettings.ambientLight = new Color(0.45f, 0.5f, 0.6f);
 
@@ -107,6 +114,7 @@ public class OrbCollectorGame : MonoBehaviour
         CreateCube("South Wall", new Vector3(0f, 0.6f, -6.5f), new Vector3(19f, 1.2f, 0.7f), new Color(0.1f, 0.17f, 0.25f));
         CreateCube("East Wall", new Vector3(9.5f, 0.6f, 0f), new Vector3(0.7f, 1.2f, 13f), new Color(0.1f, 0.17f, 0.25f));
         CreateCube("West Wall", new Vector3(-9.5f, 0.6f, 0f), new Vector3(0.7f, 1.2f, 13f), new Color(0.1f, 0.17f, 0.25f));
+        BuildArenaDetails();
 
         GameObject player = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         player.name = "Player Ball";
@@ -116,8 +124,16 @@ public class OrbCollectorGame : MonoBehaviour
         playerBody = player.AddComponent<Rigidbody>();
         playerBody.mass = 1f;
         playerBody.useGravity = false;
-        playerBody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+        playerBody.constraints = RigidbodyConstraints.FreezePositionY;
         player.AddComponent<PlayerPickup>().game = this;
+
+        GameObject ballMark = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        ballMark.name = "Rolling Ball Marker";
+        ballMark.transform.SetParent(player.transform, false);
+        ballMark.transform.localPosition = new Vector3(0f, 0.49f, 0f);
+        ballMark.transform.localScale = Vector3.one * 0.17f;
+        ballMark.GetComponent<Renderer>().material = MakeMaterial(Color.white);
+        Destroy(ballMark.GetComponent<Collider>());
 
         pickups = new PickupItem[pickupPositions.Length];
         for (int i = 0; i < pickupPositions.Length; i++)
@@ -129,6 +145,42 @@ public class OrbCollectorGame : MonoBehaviour
             pickup.GetComponent<Renderer>().material = MakeMaterial(new Color(1f, 0.73f, 0.15f));
             pickup.GetComponent<SphereCollider>().isTrigger = true;
             pickups[i] = pickup.AddComponent<PickupItem>();
+
+            GameObject pedestal = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            pedestal.name = "Orb Pedestal " + (i + 1);
+            pedestal.transform.position = new Vector3(pickupPositions[i].x, 0.08f, pickupPositions[i].z);
+            pedestal.transform.localScale = new Vector3(1.1f, 0.08f, 1.1f);
+            pedestal.GetComponent<Renderer>().material = MakeMaterial(new Color(0.2f, 0.43f, 0.52f));
+            Destroy(pedestal.GetComponent<Collider>());
+        }
+    }
+
+    private static void BuildArenaDetails()
+    {
+        for (int x = -8; x <= 8; x += 2)
+        {
+            for (int z = -5; z <= 5; z += 2)
+            {
+                GameObject tile = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                tile.name = "Floor Tile";
+                tile.transform.position = new Vector3(x, 0.015f, z);
+                tile.transform.localScale = new Vector3(1.96f, 0.03f, 1.96f);
+                float shade = ((x + z) / 2) % 2 == 0 ? 0.31f : 0.35f;
+                tile.GetComponent<Renderer>().material = MakeMaterial(new Color(0.12f, shade, 0.39f));
+                Destroy(tile.GetComponent<Collider>());
+            }
+        }
+
+        foreach (float x in new[] { -9.5f, 9.5f })
+        {
+            foreach (float z in new[] { -6.5f, 6.5f })
+            {
+                GameObject pillar = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                pillar.name = "Corner Pillar";
+                pillar.transform.position = new Vector3(x, 1f, z);
+                pillar.transform.localScale = new Vector3(0.9f, 1f, 0.9f);
+                pillar.GetComponent<Renderer>().material = MakeMaterial(new Color(0.24f, 0.44f, 0.55f));
+            }
         }
     }
 
