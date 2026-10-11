@@ -12,9 +12,15 @@ Game bắn zombie 3D cho môn Lập trình Game Cơ Bản, làm bằng Unity 6.2
 
 ## Mở project
 
-Trong Unity Hub, chọn **Add project from disk** và trỏ tới thư mục này. Mở bằng Unity 6.2 (6000.2.0f1), mở scene `Assets/Scenes/SurvivalShooterLite.unity`, rồi nhấn **Play**. Sân chơi và nhân vật được tạo khi chạy scene.
+Trong Unity Hub, chọn **Add project from disk** và trỏ tới thư mục này. Mở bằng Unity 6.2 (6000.2.0f1), mở scene `Assets/Scenes/SurvivalShooterLite.unity`, rồi nhấn **Play**.
 
-Nếu cần tạo lại scene, chọn **Tools > Build Survival Shooter Scene** trong Unity.
+Trong Hierarchy có sẵn sân chơi, Player, camera, đèn, đạo cụ và các điểm sinh zombie. Hai loại zombie nằm trong `Assets/Prefabs`. Có thể chọn từng object để xem các giá trị và asset được gắn trong Inspector.
+
+## Script chính
+
+- `PlayerController.cs`: đọc phím di chuyển, xoay nhân vật theo chuột và bắn bằng raycast.
+- `ZombieController.cs`: cho zombie đi về phía Player, tấn công và xử lý khi bị bắn.
+- `GameManager.cs`: sinh zombie, tính máu, thời gian, số zombie đã hạ và hiện giao diện đơn giản.
 
 ## Asset giáo viên
 
