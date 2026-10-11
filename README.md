@@ -29,6 +29,4 @@ Phần nhặt vật phẩm dùng cách quay và va chạm trigger đã học tro
 
 ## Asset giáo viên
 
-Nhân vật Player, zombie ZomBear và Zombunny, đạo cụ Train và Robot, texture tương ứng, hiệu ứng âm thanh và nhạc nền được lấy từ `Asset Bai Tap/Game3D_Survivor Shooter Asset` trong [repository giáo viên](https://github.com/cditc2025/LapTrinhGameCoBan). Đây là các asset hiện trực tiếp trong gameplay, không chỉ dùng làm tài liệu tham khảo.
-
-Thông tin giấy phép gốc nằm trong `SurvivalShooter_Third-PartyNotice.txt` của bộ asset giáo viên. Project bài nộp này nằm riêng và không thay đổi repository giáo viên.
+Nhân vật Player, zombie ZomBear và Zombunny, đạo cụ Train và Robot, texture tương ứng, hiệu ứng âm thanh và nhạc nền được lấy từ `Asset Bai Tap/Game3D_Survivor Shooter Asset` trong [repository giáo viên](https://github.com/cditc2025/LapTrinhGameCoBan). Đây là các asset hiện trực tiếp trong gameplay
