@@ -22,7 +22,7 @@ Trong Hierarchy có sẵn sân chơi, Player, camera, đèn, đạo cụ, ba h�
 
 - `PlayerController.cs`: đọc phím di chuyển, xoay nhân vật theo chuột và bắn bằng raycast.
 - `ZombieController.cs`: cho zombie đi về phía Player, tấn công và xử lý khi bị bắn.
-- `SupplyPickup.cs`: cho hộp tiếp tế quay, dùng `OnTriggerEnter` để nhận biết Player chạm vào và cập nhật tiến độ.
+- `SupplyPickup.cs`: cho hộp tiếp tế quay, nhận biết Player chạm vào bằng trigger hoặc khoảng cách gần rồi cập nhật tiến độ.
 - `GameManager.cs`: sinh zombie theo ba đợt, tính máu, thời gian, mục tiêu thắng và hiện giao diện bắt đầu/tạm dừng/kết thúc.
 
 Phần nhặt vật phẩm dùng cách quay và va chạm trigger đã học trong bài **Roll a Ball**. Phần giao diện có trạng thái bắt đầu, tạm dừng và kết quả để người chơi biết mình đang ở đâu trong ván chơi.
