@@ -1,6 +1,6 @@
 # Survival Shooter Lite
 
-Game bắn zombie 3D cho môn Lập trình Game Cơ Bản, làm bằng Unity 6.2 (6000.2.0f1).
+Game bắn zombie 3D cho môn Lập trình Game Cơ Bản
 
 ## Cách chơi
 
@@ -11,12 +11,6 @@ Game bắn zombie 3D cho môn Lập trình Game Cơ Bản, làm bằng Unity 6.2
 - Chạm vào hộp tiếp tế màu vàng để nhặt. Mỗi hộp hồi 15 máu (tối đa 100) và thêm 5 giây.
 - Zombie xuất hiện nhanh hơn khi đã hạ 3 và 6 con. Máu về 0 hoặc hết giờ thì thua.
 - **R** hoặc nút **PLAY AGAIN:** chơi lại.
-
-## Mở project
-
-Trong Unity Hub, chọn **Add project from disk** và trỏ tới thư mục này. Mở bằng Unity 6.2 (6000.2.0f1), mở scene `Assets/Scenes/SurvivalShooterLite.unity`, rồi nhấn **Play**.
-
-Trong Hierarchy có sẵn sân chơi, Player, camera, đèn, đạo cụ, ba hộp tiếp tế và các điểm sinh zombie. Hai loại zombie cùng hộp tiếp tế nằm trong `Assets/Prefabs`. Có thể chọn từng object để xem các giá trị và asset được gắn trong Inspector.
 
 ## Script chính
 
