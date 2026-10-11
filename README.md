@@ -1,22 +1,23 @@
-# Orb Collector 3D
+# Survival Shooter Lite
 
-Bài tập game 3D môn Lập trình Game Cơ Bản bằng Unity 6.2 (6000.2.0f1). Sân chơi dùng camera phối cảnh, tường và trụ 3D; quả bóng lăn để nhặt các vật phẩm trên bệ.
+Game bắn zombie 3D cho môn Lập trình Game Cơ Bản, làm bằng Unity 6.2 (6000.2.0f1).
 
 ## Cách chơi
 
-- WASD hoặc các phím mũi tên: di chuyển quả bóng.
-- Nhặt đủ 8 quả cầu vàng trong 75 giây để thắng.
-- Hết giờ mà chưa nhặt đủ thì thua.
-- Nhấn R hoặc nút **PLAY AGAIN** để chơi lại.
+- **WASD / phím mũi tên:** di chuyển nhân vật.
+- **Chuột:** ngắm. **Nhấn chuột trái hoặc giữ Space:** bắn.
+- Hạ **8 zombie trong 90 giây** để thắng.
+- Máu về 0 hoặc hết giờ trước khi đủ 8 zombie thì thua.
+- **R** hoặc nút **PLAY AGAIN:** chơi lại.
 
 ## Mở project
 
-Trong Unity Hub, chọn **Add project from disk** và chọn chính thư mục này. Mở bằng Unity 6.2 (6000.2.0f1). Chạy scene `Assets/Scenes/OrbCollector.unity`.
+Trong Unity Hub, chọn **Add project from disk** và trỏ tới thư mục này. Mở bằng Unity 6.2 (6000.2.0f1), mở scene `Assets/Scenes/SurvivalShooterLite.unity`, rồi nhấn **Play**. Sân chơi và nhân vật được tạo khi chạy scene.
 
-Nếu scene chưa có, vào menu **Tools > Build Orb Collector Scene** trong Unity để tạo scene, sau đó mở scene và nhấn Play.
+Nếu cần tạo lại scene, chọn **Tools > Build Survival Shooter Scene** trong Unity.
 
-## Tài nguyên giáo viên
+## Asset giáo viên
 
-Nhạc nền `Assets/Audio/Background Music.mp3` được sao chép từ `Asset Bai Tap/Game3D_Survivor Shooter Asset/Assets/Audio/Music` trong repository của giáo viên: https://github.com/cditc2025/LapTrinhGameCoBan. Bộ asset này ghi các nội dung thuộc Asset Store EULA trong `SurvivalShooter_Third-PartyNotice.txt`.
+Nhân vật Player, zombie ZomBear và Zombunny, đạo cụ Train và Robot, texture tương ứng, hiệu ứng âm thanh và nhạc nền được lấy từ `Asset Bai Tap/Game3D_Survivor Shooter Asset` trong [repository giáo viên](https://github.com/cditc2025/LapTrinhGameCoBan). Đây là các asset hiện trực tiếp trong gameplay, không chỉ dùng làm tài liệu tham khảo.
 
-Project nộp bài nằm riêng, không thay đổi repository giáo viên.
+Thông tin giấy phép gốc nằm trong `SurvivalShooter_Third-PartyNotice.txt` của bộ asset giáo viên. Project bài nộp này nằm riêng và không thay đổi repository giáo viên.
